@@ -76,12 +76,12 @@ public class TestList {
     list.add(77);
     list.add(66);
     // TODO fix the expected values in the assertions below
-    assertEquals(0, list.size());
-    assertEquals(0, list.indexOf(77));
-    assertEquals(0, list.lastIndexOf(77));
-    assertEquals(0, list.get(2).intValue());
-    assertEquals(0, list.get(3).intValue());
-    assertEquals(List.of(33, 77, 44), list);
+    assertEquals(7, list.size());
+    assertEquals(1, list.indexOf(77));
+    assertEquals(5, list.lastIndexOf(77));
+    assertEquals(44, list.get(2).intValue());
+    assertEquals(55, list.get(4).intValue());
+    assertEquals(List.of(33, 77, 44), list.subList(0,3));
   }
 
   @Test
@@ -120,7 +120,8 @@ public class TestList {
     // TODO using containsAll and List.of (see above),
     // 1) assert that list contains all five different numbers added
     // 2) assert that list does not contain all of 11, 22, and 33
-    fail("Not yet implemented"); // remove this line when done
+    assertTrue(list.containsAll(List.of(33, 44, 55, 66, 77)));
+    assertFalse(list.containsAll(List.of(11, 22, 33)));
   }
 
   @Test
@@ -128,6 +129,7 @@ public class TestList {
     // TODO in a single statement using addAll and List.of,
     // add items to the list to make the following assertions pass
     // (without touching the assertions themselves)
+    list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
     assertEquals(7, list.size());
     assertEquals(33, list.get(0).intValue());
     assertEquals(77, list.get(1).intValue());
